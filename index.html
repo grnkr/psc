@@ -5,603 +5,295 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Showcase</title>
     <style>
-        :root {
-            --primary: #4361ee;
-            --primary-dark: #3a0ca3;
-            --secondary: #3f37c9;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --light-gray: #e9ecef;
-            --success: #4cc9f0;
-            --warning: #f72585;
-            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-
         body {
-            font-family: var(--font-main);
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
             line-height: 1.6;
-            background-color: #f5f7ff;
-            color: var(--dark);
         }
-
         header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6);
             color: white;
             text-align: center;
-            padding: 3rem 2rem;
-            box-shadow: var(--shadow-md);
-            position: relative;
-            overflow: hidden;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            transform: rotate(30deg);
-        }
-
         h1 {
-            margin: 0;
-            font-size: 2.8rem;
-            font-weight: 700;
-            position: relative;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
         }
-
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-top: 0.5rem;
-            font-weight: 300;
-        }
-
         nav {
-            background-color: white;
+            background-color: #1f2937;
             padding: 1rem;
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
-
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 1.5rem;
+        }
         nav ul {
             list-style-type: none;
-            margin: 0 auto;
-            padding: 0;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            max-width: 1200px;
+            gap: 2rem;
         }
-
-        nav ul li {
-            margin: 0.5rem 1rem;
-        }
-
         nav ul li a {
-            color: var(--gray);
+            color: #f9fafb;
             text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-        }
-
-        nav ul li a:hover, 
-        nav ul li a.active {
-            background-color: var(--primary);
-            color: white;
-            box-shadow: 0 4px 6px rgba(67, 97, 238, 0.3);
-        }
-
-        nav ul li a i {
-            margin-right: 8px;
             font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
-
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #3b82f6;
+            color: white;
+        }
         .container {
             max-width: 1200px;
             margin: 2rem auto;
-            padding: 0 1.5rem;
+            padding: 0 1rem;
         }
-
         .project-section {
             display: none;
             background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow-md);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
-            animation: fadeIn 0.5s ease-out;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .project-section.active {
             display: block;
         }
-
         h2 {
-            color: var(--primary);
-            padding-bottom: 0.75rem;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--success));
-            border-radius: 2px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border: 1px solid var(--light-gray);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--success));
-        }
-
-        .project-card h3 {
-            color: var(--dark);
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .project-card p {
-            color: var(--gray);
-            font-size: 0.9rem;
+            color: #1e3a8a;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
             margin-bottom: 1rem;
         }
-
-        .tech-tag {
-            display: inline-block;
-            background-color: #e0e7ff;
-            color: var(--primary-dark);
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
+        ul {
+            list-style-type: none;
+        }
+        li {
+            background: #f9fafb;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #3b82f6;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        footer {
-            background-color: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            margin: 1rem 0;
-        }
-
-        .footer-links a {
-            color: var(--light);
-            margin: 0 1rem;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--success);
-        }
-
-        .copyright {
-            opacity: 0.7;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        /* Responsive adjustments */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+            .nav-toggle {
+                display: block;
             }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
             nav ul {
+                display: none;
                 flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul li {
-                margin: 0.25rem 0;
+                gap: 0;
+                background-color: #1f2937;
+                position: absolute;
+                top: 4.5rem;
+                left: 0;
                 width: 100%;
-                text-align: center;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             }
-            
+            nav ul.active {
+                display: flex;
+            }
+            nav ul li {
+                margin: 0.5rem 0;
+            }
             nav ul li a {
-                justify-content: center;
+                display: block;
+                padding: 0.75rem;
+                font-size: 1rem;
+            }
+            .container {
+                margin: 1rem auto;
+                padding: 0 0.5rem;
+            }
+            li {
+                padding: 0.75rem;
             }
         }
-
-        /* Animation for project cards */
-        @keyframes cardEntrance {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        @media (max-width: 480px) {
+            header {
+                padding: 1.5rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            h1 {
+                font-size: clamp(1.5rem, 6vw, 2rem);
+            }
+            h2 {
+                font-size: clamp(1.2rem, 5vw, 1.5rem);
+            }
+            .project-section {
+                padding: 1rem;
             }
         }
-
-        .project-card {
-            animation: cardEntrance 0.5s ease-out;
-            animation-fill-mode: backwards;
-        }
-
-        /* Delay animations for grid items */
-        .projects-grid .project-card:nth-child(1) { animation-delay: 0.1s; }
-        .projects-grid .project-card:nth-child(2) { animation-delay: 0.2s; }
-        .projects-grid .project-card:nth-child(3) { animation-delay: 0.3s; }
-        .projects-grid .project-card:nth-child(4) { animation-delay: 0.4s; }
-        .projects-grid .project-card:nth-child(5) { animation-delay: 0.5s; }
-        .projects-grid .project-card:nth-child(6) { animation-delay: 0.6s; }
-        .projects-grid .project-card:nth-child(7) { animation-delay: 0.7s; }
-        .projects-grid .project-card:nth-child(8) { animation-delay: 0.8s; }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <h1>Project Showcase</h1>
-        <p class="subtitle">Explore my collection of development projects across multiple technologies</p>
     </header>
     <nav>
-        <ul>
-            <li><a href="#php" onclick="showSection('php')"><i class="fab fa-php"></i> PHP Projects</a></li>
-            <li><a href="#python" onclick="showSection('python')"><i class="fab fa-python"></i> Python Projects</a></li>
-            <li><a href="#java" onclick="showSection('java')" class="active"><i class="fab fa-java"></i> Java Projects</a></li>
-            <li><a href="#machine-learning" onclick="showSection('machine-learning')"><i class="fas fa-brain"></i> Machine Learning</a></li>
+        <button class="nav-toggle" onclick="toggleNav()">☰</button>
+        <ul id="nav-menu">
+            <li><a href="#php" onclick="showSection('php')">PHP Projects</a></li>
+            <li><a href="#python" onclick="showSection('python')">Python Projects</a></li>
+            <li><a href="#java" onclick="showSection('java')" class="active">Java Projects</a></li>
+            <li><a href="#machine-learning" onclick="showSection('machine-learning')">Machine Learning Projects</a></li>
         </ul>
     </nav>
     <div class="container">
         <div class="project-section" id="php">
             <h2>PHP Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Online Examination System</h3>
-                    <p>A comprehensive platform for conducting online tests with automated grading.</p>
-                    <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">MySQL</span>
-                    <span class="tech-tag">Bootstrap</span>
-                </div>
-                <div class="project-card">
-                    <h3>School Management System</h3>
-                    <p>Complete solution for school administration, student records, and reporting.</p>
-                    <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">jQuery</span>
-                    <span class="tech-tag">AJAX</span>
-                </div>
-                <div class="project-card">
-                    <h3>Attendance Management System</h3>
-                    <p>Digital solution for tracking employee or student attendance records.</p>
-                    <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">MySQL</span>
-                    <span class="tech-tag">DataTables</span>
-                </div>
-                <div class="project-card">
-                    <h3>Online Admission System</h3>
-                    <p>Streamlined admission process for educational institutions.</p>
-                    <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">PDF Generation</span>
-                </div>
-                <div class="project-card">
-                    <h3>Tours and Travels System</h3>
-                    <p>Booking platform for travel packages with payment integration.</p>
-                    <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">Payment Gateway</span>
-                </div>
-                <div class="project-card">
-                    <h3>Student Result Management</h3>
-                    <p>Automated system for managing and publishing student results.</p>
-                    <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">Charts.js</span>
-                </div>
-                <div class="project-card">
-                    <h3>Online Jewellery Shopping</h3>
-                    <p>E-commerce platform for jewellery with advanced product filtering.</p>
-                    <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">Stripe API</span>
-                </div>
-                <div class="project-card">
-                    <h3>Online Art Gallery</h3>
-                    <p>Platform for artists to showcase and sell their artwork.</p>
-                    <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">Image Processing</span>
-                </div>
-                <div class="project-card">
-                    <h3>Blood Bank Management</h3>
-                    <p>System for managing blood donations and inventory.</p>
-                    <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">SMS Integration</span>
-                </div>
-                <div class="project-card">
-                    <h3>Online Voting System</h3>
-                    <p>Secure digital voting platform with voter authentication.</p>
-                    <span class="tech-tag">PHP</span>
-                    <span class="tech-tag">Security</span>
-                </div>
-            </div>
+            <ul>
+                <li>Online Examination System</li>
+                <li>School Management System</li>
+                <li>Attendance Management System</li>
+                <li>Online Admission System</li>
+                <li>Tours and Travels System</li>
+                <li>Student Result Management System</li>
+                <li>Online Jewellery Shopping</li>
+                <li>Online Shopping</li>
+                <li>Online Art Gallery</li>
+                <li>Online Matrimonial Website</li>
+                <li>Online Book Store</li>
+                <li>Blood Bank Management System</li>
+                <li>Car Rental System</li>
+                <li>Online Food Ordering System</li>
+                <li>Hostel Management System</li>
+                <li>Online Voting System</li>
+                <li>Gym Management System</li>
+                <li>Leave Management System</li>
+                <li>Image Crop Project</li>
+                <li>Image Editor Project</li>
+                <li>Online Hotel Booking</li>
+                <li>College Management System</li>
+                <li>Image Gallery</li>
+                <li>Online Notes Sharing Platform</li>
+                <li>Travel Management System</li>
+                <li>House Rental and Property Listing</li>
+                <li>Electricity Bill Payment</li>
+                <li>Expense Management System</li>
+                <li>Time Management System</li>
+                <li>Event Booking System</li>
+                <li>Online Doctor Appointment Booking</li>
+                <li>Visitor Management System</li>
+                <li>Online Chat Application</li>
+                <li>Casino Project: Black Jack & Slots</li>
+                <li>Life Insurance Management System</li>
+                <li>Beauty Parlour Management System</li>
+                <li>Vehicle Breakdown Assistance Management</li>
+                <li>Online Time Table Generator</li>
+                <li>Online Lawyer Management System</li>
+                <li>Student Project Allocation System</li>
+            </ul>
         </div>
         <div class="project-section" id="python">
             <h2>Python Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Contact Management System</h3>
-                    <p>CLI application for managing personal contacts with search functionality.</p>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">SQLite</span>
-                </div>
-                <div class="project-card">
-                    <h3>Ludo Game Project</h3>
-                    <p>Digital version of the classic board game with AI opponents.</p>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Pygame</span>
-                </div>
-                <div class="project-card">
-                    <h3>Hotel Management System</h3>
-                    <p>Complete solution for hotel operations with room booking system.</p>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Tkinter</span>
-                </div>
-                <div class="project-card">
-                    <h3>Pharmacy Management System</h3>
-                    <p>Inventory and sales management for pharmacies.</p>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">MySQL</span>
-                </div>
-                <div class="project-card">
-                    <h3>ATM Software</h3>
-                    <p>Simulation of ATM operations with account management.</p>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">OOP</span>
-                </div>
-                <div class="project-card">
-                    <h3>Online Job Portal</h3>
-                    <p>Django-based platform connecting job seekers with employers.</p>
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">PostgreSQL</span>
-                </div>
-                <div class="project-card">
-                    <h3>Covid-19 Hospital Management</h3>
-                    <p>Specialized system for managing COVID patient flows.</p>
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">Chart.js</span>
-                </div>
-                <div class="project-card">
-                    <h3>Online Banking System</h3>
-                    <p>Secure digital banking platform with transaction features.</p>
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">Security</span>
-                </div>
-                <div class="project-card">
-                    <h3>Weather Forecast Project</h3>
-                    <p>Real-time weather data visualization with API integration.</p>
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">API</span>
-                </div>
-                <div class="project-card">
-                    <h3>Blog Website</h3>
-                    <p>Full-featured blogging platform with user accounts.</p>
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">CKEditor</span>
-                </div>
-            </div>
+            <ul>
+                <li>Contact Management System</li>
+                <li>Ludo Game Project</li>
+                <li>Hotel Management System</li>
+                <li>Complaint Management System</li>
+                <li>Pharmacy Management System</li>
+                <li>Bank Management System</li>
+                <li>Movie Rental Shop Management System</li>
+                <li>Student Management System</li>
+                <li>ATM Software</li>
+                <li>Hotel Management System with Tkinter GUI</li>
+                <li>Django Medical Shop Management System</li>
+                <li>Online Job Portal in Django</li>
+                <li>Covid-19 Hospital Management in Django</li>
+                <li>GST Billing Project in Django</li>
+                <li>Online Banking System in Django</li>
+                <li>Online Book Store in Django</li>
+                <li>Weather Forecast Project in Django</li>
+                <li>Django School Management System</li>
+                <li>User Management System in Django</li>
+                <li>Blog Website in Django</li>
+            </ul>
         </div>
         <div class="project-section active" id="java">
             <h2>Java Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Airlines Reservation System</h3>
-                    <p>Complete flight booking system with seat selection.</p>
-                    <span class="tech-tag">Java</span>
-                    <span class="tech-tag">Swing</span>
-                </div>
-                <div class="project-card">
-                    <h3>Banking System</h3>
-                    <p>Core banking operations with transaction processing.</p>
-                    <span class="tech-tag">Java</span>
-                    <span class="tech-tag">OOP</span>
-                </div>
-                <div class="project-card">
-                    <h3>Online Examination System</h3>
-                    <p>JSP/Servlet based exam platform with timer.</p>
-                    <span class="tech-tag">JSP</span>
-                    <span class="tech-tag">Servlet</span>
-                </div>
-                <div class="project-card">
-                    <h3>Restaurant Management</h3>
-                    <p>Point of sale system for restaurant operations.</p>
-                    <span class="tech-tag">Java</span>
-                    <span class="tech-tag">MySQL</span>
-                </div>
-                <div class="project-card">
-                    <h3>Bus Ticket Booking</h3>
-                    <p>Online platform for reserving bus tickets.</p>
-                    <span class="tech-tag">JSP</span>
-                    <span class="tech-tag">Bootstrap</span>
-                </div>
-                <div class="project-card">
-                    <h3>Hospital Management</h3>
-                    <p>Patient records and appointment system.</p>
-                    <span class="tech-tag">JSP</span>
-                    <span class="tech-tag">MySQL</span>
-                </div>
-                <div class="project-card">
-                    <h3>Text File Encryption</h3>
-                    <p>Secure file encryption/decryption tool.</p>
-                    <span class="tech-tag">Java</span>
-                    <span class="tech-tag">Cryptography</span>
-                </div>
-                <div class="project-card">
-                    <h3>Payroll Management</h3>
-                    <p>Employee salary processing system.</p>
-                    <span class="tech-tag">Swing</span>
-                    <span class="tech-tag">MySQL</span>
-                </div>
-                <div class="project-card">
-                    <h3>Inventory Management</h3>
-                    <p>Stock control and reporting system.</p>
-                    <span class="tech-tag">Java</span>
-                    <span class="tech-tag">Reports</span>
-                </div>
-                <div class="project-card">
-                    <h3>Online Food Order</h3>
-                    <p>Spring Boot and Angular food delivery system.</p>
-                    <span class="tech-tag">Spring Boot</span>
-                    <span class="tech-tag">Angular</span>
-                </div>
-            </div>
+            <ul>
+                <li>Airlines Reservation System</li>
+                <li>Banking System</li>
+                <li>Currency Converter</li>
+                <li>Online Examination System in JSP Servlet</li>
+                <li>Restaurant Management System</li>
+                <li>Bus Ticket Booking System</li>
+                <li>Percentage Calculator in NetBeans</li>
+                <li>Online Banking System</li>
+                <li>Hospital Management System with JSP MySQL</li>
+                <li>Online Medicine Shop in JSP MySQL</li>
+                <li>Text File Encryption Decryption</li>
+                <li>Student Counselling System</li>
+                <li>Payroll Management System with Swing</li>
+                <li>Attendance Management System with MySQL</li>
+                <li>Cryptography Project in NetBeans</li>
+                <li>Movie Ticket Booking System with MySQL</li>
+                <li>Inventory Management System with MySQL</li>
+                <li>Internet Service Provider Project</li>
+                <li>Online Food Order with Spring Boot and Angular</li>
+                <li>Online Book Store in Spring Boot</li>
+                <li>School Management System with MySQL</li>
+                <li>Hotel Management System with Swing GUI and MySQL</li>
+            </ul>
         </div>
         <div class="project-section" id="machine-learning">
             <h2>Machine Learning Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Salary Prediction</h3>
-                    <p>Web app predicting salaries based on experience and role.</p>
-                    <span class="tech-tag">Linear Regression</span>
-                    <span class="tech-tag">Flask</span>
-                </div>
-                <div class="project-card">
-                    <h3>Sentiment Analysis</h3>
-                    <p>Analyzing product reviews for positive/negative sentiment.</p>
-                    <span class="tech-tag">NLP</span>
-                    <span class="tech-tag">Flask</span>
-                </div>
-                <div class="project-card">
-                    <h3>Medical Insurance Cost</h3>
-                    <p>Predicting insurance costs based on health factors.</p>
-                    <span class="tech-tag">Regression</span>
-                    <span class="tech-tag">Flask</span>
-                </div>
-                <div class="project-card">
-                    <h3>Image to Cartoon</h3>
-                    <p>Converting photos to cartoon versions using OpenCV.</p>
-                    <span class="tech-tag">OpenCV</span>
-                    <span class="tech-tag">Image Processing</span>
-                </div>
-                <div class="project-card">
-                    <h3>AI Chess Game</h3>
-                    <p>Chess with AI opponent using minimax algorithm.</p>
-                    <span class="tech-tag">AI</span>
-                    <span class="tech-tag">Game Theory</span>
-                </div>
-                <div class="project-card">
-                    <h3>Handwritten Digits</h3>
-                    <p>Recognizing handwritten digits with neural networks.</p>
-                    <span class="tech-tag">CNN</span>
-                    <span class="tech-tag">TensorFlow</span>
-                </div>
-                <div class="project-card">
-                    <h3>Netflix Recommendation</h3>
-                    <p>Content-based movie recommendation system.</p>
-                    <span class="tech-tag">Recommendation</span>
-                    <span class="tech-tag">Pandas</span>
-                </div>
-                <div class="project-card">
-                    <h3>Age/Gender Detection</h3>
-                    <p>Detecting age and gender from facial images.</p>
-                    <span class="tech-tag">Deep Learning</span>
-                    <span class="tech-tag">Flask</span>
-                </div>
-                <div class="project-card">
-                    <h3>License Plate Detection</h3>
-                    <p>Identifying vehicle license plates in images.</p>
-                    <span class="tech-tag">OpenCV</span>
-                    <span class="tech-tag">Object Detection</span>
-                </div>
-                <div class="project-card">
-                    <h3>Alzheimer's Prediction</h3>
-                    <p>Early detection from medical imaging data.</p>
-                    <span class="tech-tag">Medical AI</span>
-                    <span class="tech-tag">CNN</span>
-                </div>
-            </div>
+            <ul>
+                <li>Salary Prediction using Machine Learning Web App</li>
+                <li>Sentiment Analysis ML Flask Web App</li>
+                <li>IMDB Sentiment Analysis</li>
+                <li>Medical Insurance Cost Prediction in Flask</li>
+                <li>Insurance Claim Prediction</li>
+                <li>Image to Cartoon with OpenCV</li>
+                <li>AI Chess Game</li>
+                <li>AI Handwritten Digits Recognition</li>
+                <li>Netflix Movie Recommendation System</li>
+                <li>Food Recommendation Based on Mood in Django</li>
+                <li>Music Recommendation Based on Facial Expression</li>
+                <li>Automated Answer Grading System</li>
+                <li>Iris Flower Classification with Decision Trees</li>
+                <li>Handwritten Digit Recognition in Flask</li>
+                <li>Cat vs Dog Image Classification with CNN</li>
+                <li>Age and Gender Detection with Deep Learning in Flask</li>
+                <li>Vehicle Number Plate Detection with Deep Learning</li>
+                <li>Employee Attrition Prediction</li>
+                <li>Predicting Student Performance</li>
+                <li>Campus Recruitment Prediction</li>
+                <li>Road Accident Severity Prediction</li>
+                <li>Early Stages of Alzheimer’s Disease Prediction</li>
+                <li>Air Quality Index Prediction Using PM 2.5</li>
+                <li>Drug Recommendation System Based on Sentiment Analysis</li>
+                <li>Big Mart Sales Prediction</li>
+                <li>AI Black and White Image Colorization with OpenCV</li>
+                <li>Phishing Websites Detection</li>
+            </ul>
         </div>
     </div>
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="#"><i class="fas fa-envelope"></i> Contact</a>
-            </div>
-            <p class="copyright">© 2023 Project Showcase. All rights reserved.</p>
-        </div>
-    </footer>
     <script>
         function showSection(sectionId) {
             document.querySelectorAll('.project-section').forEach(section => {
@@ -612,9 +304,14 @@
                 link.classList.remove('active');
             });
             document.querySelector(`nav ul li a[href="#${sectionId}"]`).classList.add('active');
-            
-            // Smooth scroll to top of section
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+            if (window.innerWidth <= 768) {
+                toggleNav(); // Close menu on mobile after selection
+            }
+        }
+
+        function toggleNav() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
         }
     </script>
 </body>
