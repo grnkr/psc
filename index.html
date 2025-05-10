@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            text-align: center;
+            padding: 2em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav {
+            background-color: #343a40;
+            padding: 1em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: #f8f9fa;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #007bff;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .project-section {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .project-section.active {
+            display: block;
+        }
+        h2 {
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            font-size: 1.8em;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 5px solid #007bff;
+            transition: transform 0.2s ease;
+        }
+        li:hover {
+            transform: translateX(5px);
+            background: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project Showcase</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#php" onclick="showSection('php')">PHP Projects</a></li>
+            <li><a href="#python" onclick="showSection('python')">Python Projects</a></li>
+            <li><a href="#java" onclick="showSection('java')" class="active">Java Projects</a></li>
+            <li><a href="#machine-learning" onclick="showSection('machine-learning')">Machine Learning Projects</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="project-section" id="php">
+            <h2>PHP Projects</h2>
+            <ul>
+                <li>Online Examination System</li>
+                <li>School Management System</li>
+                <li>Attendance Management System</li>
+                <li>Online Admission System</li>
+                <li>Tours and Travels System</li>
+                <li>Student Result Management System</li>
+                <li>Online Jewellery Shopping</li>
+                <li>Online Shopping</li>
+                <li>Online Art Gallery</li>
+                <li>Online Matrimonial Website</li>
+                <li>Online Book Store</li>
+                <li>Blood Bank Management System</li>
+                <li>Car Rental System</li>
+                <li>Online Food Ordering System</li>
+                <li>Hostel Management System</li>
+                <li>Online Voting System</li>
+                <li>Gym Management System</li>
+                <li>Leave Management System</li>
+                <li>Image Crop Project</li>
+                <li>Image Editor Project</li>
+                <li>Online Hotel Booking</li>
+                <li>College Management System</li>
+                <li>Image Gallery</li>
+                <li>Online Notes Sharing Platform</li>
+                <li>Travel Management System</li>
+                <li>House Rental and Property Listing</li>
+                <li>Electricity Bill Payment</li>
+                <li>Expense Management System</li>
+                <li>Time Management System</li>
+                <li>Event Booking System</li>
+                <li>Online Doctor Appointment Booking</li>
+                <li>Visitor Management System</li>
+                <li>Online Chat Application</li>
+                <li>Casino Project: Black Jack & Slots</li>
+                <li>Life Insurance Management System</li>
+                <li>Beauty Parlour Management System</li>
+                <li>Vehicle Breakdown Assistance Management</li>
+                <li>Online Time Table Generator</li>
+                <li>Online Lawyer Management System</li>
+                <li>Student Project Allocation System</li>
+            </ul>
+        </div>
+        <div class="project-section" id="python">
+            <h2>Python Projects</h2>
+            <ul>
+                <li>Contact Management System</li>
+                <li>Ludo Game Project</li>
+                <li>Hotel Management System</li>
+                <li>Complaint Management System</li>
+                <li>Pharmacy Management System</li>
+                <li>Bank Management System</li>
+                <li>Movie Rental Shop Management System</li>
+                <li>Student Management System</li>
+                <li>ATM Software</li>
+                <li>Hotel Management System with Tkinter GUI</li>
+                <li>Django Medical Shop Management System</li>
+                <li>Online Job Portal in Django</li>
+                <li>Covid-19 Hospital Management in Django</li>
+                <li>GST Billing Project in Django</li>
+                <li>Online Banking System in Django</li>
+                <li>Online Book Store in Django</li>
+                <li>Weather Forecast Project in Django</li>
+                <li>Django School Management System</li>
+                <li>User Management System in Django</li>
+                <li>Blog Website in Django</li>
+            </ul>
+        </div>
+        <div class="project-section active" id="java">
+            <h2>Java Projects</h2>
+            <ul>
+                <li>Airlines Reservation System</li>
+                <li>Banking System</li>
+                <li>Currency Converter</li>
+                <li>Online Examination System in JSP Servlet</li>
+                <li>Restaurant Management System</li>
+                <li>Bus Ticket Booking System</li>
+                <li>Percentage Calculator in NetBeans</li>
+                <li>Online Banking System</li>
+                <li>Hospital Management System with JSP MySQL</li>
+                <li>Online Medicine Shop in JSP MySQL</li>
+                <li>Text File Encryption Decryption</li>
+                <li>Student Counselling System</li>
+                <li>Payroll Management System with Swing</li>
+                <li>Attendance Management System with MySQL</li>
+                <li>Cryptography Project in NetBeans</li>
+                <li>Movie Ticket Booking System with MySQL</li>
+                <li>Inventory Management System with MySQL</li>
+                <li>Internet Service Provider Project</li>
+                <li>Online Food Order with Spring Boot and Angular</li>
+                <li>Online Book Store in Spring Boot</li>
+                <li>School Management System with MySQL</li>
+                <li>Hotel Management System with Swing GUI and MySQL</li>
+            </ul>
+        </div>
+        <div class="project-section" id="machine-learning">
+            <h2>Machine Learning Projects</h2>
+            <ul>
+                <li>Salary Prediction using Machine Learning Web App</li>
+                <li>Sentiment Analysis ML Flask Web App</li>
+                <li>IMDB Sentiment Analysis</li>
+                <li>Medical Insurance Cost Prediction in Flask</li>
+                <li>Insurance Claim Prediction</li>
+                <li>Image to Cartoon with OpenCV</li>
+                <li>AI Chess Game</li>
+                <li>AI Handwritten Digits Recognition</li>
+                <li>Netflix Movie Recommendation System</li>
+                <li>Food Recommendation Based on Mood in Django</li>
+                <li>Music Recommendation Based on Facial Expression</li>
+                <li>Automated Answer Grading System</li>
+                <li>Iris Flower Classification with Decision Trees</li>
+                <li>Handwritten Digit Recognition in Flask</li>
+                <li>Cat vs Dog Image Classification with CNN</li>
+                <li>Age and Gender Detection with Deep Learning in Flask</li>
+                <li>Vehicle Number Plate Detection with Deep Learning</li>
+                <li>Employee Attrition Prediction</li>
+                <li>Predicting Student Performance</li>
+                <li>Campus Recruitment Prediction</li>
+                <li>Road Accident Severity Prediction</li>
+                <li>Early Stages of Alzheimer’s Disease Prediction</li>
+                <li>Air Quality Index Prediction Using PM 2.5</li>
+                <li>Drug Recommendation System Based on Sentiment Analysis</li>
+                <li>Big Mart Sales Prediction</li>
+                <li>AI Black and White Image Colorization with OpenCV</li>
+                <li>Phishing Websites Detection</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.project-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`nav ul li a[href="#${sectionId}"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
